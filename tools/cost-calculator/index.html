@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0066FF" />
+  <title>EV Charger Installation Cost Calculator UK 2026 | Plug In Stations</title>
+  <meta name="description" content="How much does EV charger installation cost in the UK? Use our free calculator to estimate your install based on property type, distance and consumer unit." />
+  <link rel="canonical" href="https://www.pluginstations.co.uk/tools/cost-calculator/" />
+  <meta property="og:title" content="EV Charger Installation Cost Calculator | Plug In Stations" />
+  <meta property="og:description" content="Estimate your install cost in 30 seconds. Free, no signup." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230066FF'/%3E%3Cpath d='M13 2 4.5 12.5h6L9.5 22 19.5 11.5h-6z' fill='%23fff'/%3E%3C/svg%3E" />
+  
+  <script>(function(){var t=localStorage.getItem('pis_theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark');})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/js/tw-config.js"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="bg-white dark:bg-pis-ink text-pis-text dark:text-white antialiased font-sans">
+  <header data-pis-header></header>
+
+  <main class="pt-[100px]">
+    <section class="bg-pis-light dark:bg-white/[0.015] border-b border-slate-200 dark:border-white/10 py-10">
+      <div class="max-w-5xl mx-auto px-5 lg:px-8">
+        <nav class="flex items-center gap-2 text-sm text-pis-text-3 dark:text-slate-400 mb-6" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-pis-deep dark:hover:text-pis-lime">Home</a><span>/</span>
+          <a href="/tools/cost-calculator/" class="hover:text-pis-deep dark:hover:text-pis-lime">Tools</a><span>/</span>
+          <span class="text-pis-text dark:text-white">Cost Calculator</span>
+        </nav>
+        <span class="eyebrow mb-4"><span class="eyebrow-dot"></span>FREE TOOL</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">EV charger installation cost calculator.</h1>
+        <p class="text-lg text-pis-text-3 dark:text-slate-300 max-w-2xl">Get an instant, transparent estimate for your install. Updated for 2026 prices, including EV chargers, labour, cabling and any consumer unit upgrades.</p>
+      </div>
+    </section>
+
+    <section class="py-14 lg:py-20">
+      <div class="max-w-5xl mx-auto px-5 lg:px-8">
+        <div data-tool="cost-calculator" class="grid lg:grid-cols-5 gap-8">
+          <!-- Inputs -->
+          <div class="lg:col-span-2 bg-white dark:bg-pis-ink-2 rounded-3xl p-7 lg:p-8 shadow-sm border border-slate-200 dark:border-white/10 space-y-5 self-start">
+            <h2 class="text-lg font-bold mb-2">Your install</h2>
+            <label class="field field-light">
+              <span>Property type</span>
+              <select name="property">
+                <option value="house">Detached / semi house</option>
+                <option value="terrace">Mid-terrace house</option>
+                <option value="flat">Flat or apartment</option>
+                <option value="commercial">Commercial premises</option>
+              </select>
+            </label>
+            <label class="field field-light">
+              <span>Distance: meter to EV charger</span>
+              <select name="distance">
+                <option value="short">Under 5 metres</option>
+                <option value="medium">5–10 metres</option>
+                <option value="long">10–20 metres</option>
+                <option value="xl">Over 20 metres</option>
+              </select>
+            </label>
+            <label class="field field-light">
+              <span>Consumer unit</span>
+              <select name="consumer">
+                <option value="modern">Modern (under 10 yrs)</option>
+                <option value="upgrade">Likely needs upgrade</option>
+              </select>
+            </label>
+            <label class="field field-light">
+              <span>EV Charger preference</span>
+              <select name="EV charger">
+                <option value="budget">Budget (basic 7 kW)</option>
+                <option value="smart" selected>Smart (app-controlled)</option>
+                <option value="premium">Premium (smart + solar)</option>
+              </select>
+            </label>
+          </div>
+
+          <!-- Result -->
+          <div class="lg:col-span-3">
+            <div class="bg-gradient-to-br from-pis-ink via-pis-ink-2 to-pis-ink-3 text-white rounded-3xl p-7 lg:p-9 mb-5 relative overflow-hidden">
+              <div class="hero-grid opacity-50"></div>
+              <div class="relative">
+                <span class="live-indicator mb-3">LIVE ESTIMATE</span>
+                <p data-out="label" class="text-sm text-slate-400 mb-1">Estimated total - Smart EV charger</p>
+                <p class="font-extrabold text-5xl lg:text-6xl tracking-tight mb-1">
+                  <span data-out="lo">£1,448</span> <span class="text-pis-text-3 dark:text-slate-400 text-3xl">–</span> <span data-out="hi">£1,948</span>
+                </p>
+                <p class="text-sm text-slate-400 mb-7">Fully fitted &amp; certified</p>
+
+                <ul class="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-1 list-none" data-out="breakdown"></ul>
+
+                <p data-out="grant" class="mt-5 text-sm text-slate-300 leading-relaxed"></p>
+              </div>
+            </div>
+
+            <div class="bg-white dark:bg-pis-ink-2 rounded-3xl p-7 border border-slate-200 dark:border-white/10 shadow-sm">
+              <p class="text-sm text-pis-text-3 dark:text-slate-300 mb-4">Like this estimate? We'll lock the price in writing. Most quotes returned within 24 hours.</p>
+              <a href="/#quote" class="btn btn-primary btn-lg w-full">Get a fixed-price quote &rarr;</a>
+              <p class="text-xs text-center text-pis-text-3 dark:text-slate-400 mt-3">Or call <a class="font-semibold text-pis-deep" href="tel:+442037957117">0203 795 7117</a></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cross-tool ribbon -->
+        <div class="mt-14 grid sm:grid-cols-3 gap-4">
+          <a href="/tools/grant-checker/" class="bg-white dark:bg-pis-ink-2 border border-slate-200 dark:border-white/10 rounded-2xl p-5 lift hover:shadow-md hover:border-pis-deep block">
+            <p class="text-xs font-bold tracking-[0.14em] text-pis-deep uppercase mb-1.5">NEXT</p>
+            <p class="font-bold mb-1">Grant Checker</p>
+            <p class="text-sm text-pis-text-3 dark:text-slate-300">Am I eligible for an OZEV grant?</p>
+          </a>
+          <a href="/tools/charging-cost-calculator/" class="bg-white dark:bg-pis-ink-2 border border-slate-200 dark:border-white/10 rounded-2xl p-5 lift hover:shadow-md hover:border-pis-deep block">
+            <p class="text-xs font-bold tracking-[0.14em] text-pis-deep uppercase mb-1.5">RUNNING COSTS</p>
+            <p class="font-bold mb-1">Charging Cost Calculator</p>
+            <p class="text-sm text-pis-text-3 dark:text-slate-300">How much will charging cost?</p>
+          </a>
+          <a href="/smart-install-checker/" class="bg-white dark:bg-pis-ink-2 border border-slate-200 dark:border-white/10 rounded-2xl p-5 lift hover:shadow-md hover:border-pis-deep block">
+            <p class="text-xs font-bold tracking-[0.14em] text-pis-deep uppercase mb-1.5">FULL CHECK</p>
+            <p class="font-bold mb-1">Smart Install Checker</p>
+            <p class="text-sm text-pis-text-3 dark:text-slate-300">5-step suitability check</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer data-pis-footer></footer>
+  <script src="/js/main.js"></script>
+  <script src="/js/tools.js"></script>
+</body>
+</html>

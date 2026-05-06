@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EV Charger Installation Across the UK - Locations | Plug In Stations</title>
+  <meta name="description" content="NICEIC-approved EV charger installation across the UK. Local engineers in London, Manchester, Birmingham, Leeds, Bristol, Glasgow, Edinburgh and more." />
+  <link rel="canonical" href="https://www.pluginstations.co.uk/locations/" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230066FF'/%3E%3Cpath d='M13 2 4.5 12.5h6L9.5 22 19.5 11.5h-6z' fill='%23fff'/%3E%3C/svg%3E" />
+  
+  <script>(function(){var t=localStorage.getItem('pis_theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark');})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/js/tw-config.js"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <style>
+    #pis-uk-map { width: 100%; height: 540px; border-radius: 24px; overflow: hidden; }
+    .dark #pis-uk-map { filter: brightness(0.85) saturate(0.7); }
+    .pis-marker { background: #009245; width: 18px; height: 18px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 0 4px rgba(0,146,69,0.25), 0 4px 12px rgba(0,0,0,0.3); cursor: pointer; transition: transform .2s; }
+    .pis-marker:hover { transform: scale(1.3); }
+    .dark .pis-marker { background: #C1FF1D; border-color: #0A0E14; box-shadow: 0 0 0 4px rgba(193,255,29,0.25), 0 4px 12px rgba(0,0,0,0.5); }
+    .leaflet-popup-content-wrapper { border-radius: 12px; font-family: 'Poppins', sans-serif; }
+    .leaflet-popup-content { margin: 12px 16px; }
+    .leaflet-popup-content strong { display: block; font-size: 0.95rem; margin-bottom: 2px; }
+    .leaflet-popup-content small { color: #475569; font-size: 0.8rem; }
+    .leaflet-popup-content a { color: #009245; font-size: 0.8rem; font-weight: 600; text-decoration: none; }
+    .leaflet-popup-content a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body class="bg-white dark:bg-pis-ink text-pis-text dark:text-white antialiased font-sans">
+  <header data-pis-header></header>
+
+  <main class="pt-[100px]">
+    <section class="bg-pis-light dark:bg-white/[0.015] border-b border-slate-200 dark:border-white/10 py-10">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <nav class="flex items-center gap-2 text-sm text-pis-text-3 dark:text-slate-400 mb-6" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-pis-deep dark:hover:text-pis-lime">Home</a><span>/</span><span class="text-pis-text dark:text-white">Locations</span>
+        </nav>
+        <span class="eyebrow mb-4"><span class="eyebrow-dot"></span>NATIONWIDE COVERAGE</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">EV charger installation across the UK.</h1>
+        <p class="text-lg text-pis-text-3 dark:text-slate-300 max-w-2xl">Local NICEIC-approved engineers - based across England, Scotland and Wales. Pick your city for local pricing, lead times and reviews.</p>
+      </div>
+    </section>
+
+    <section class="py-12 lg:py-16">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 mb-12">
+        <div id="pis-uk-map" class="border border-slate-200 dark:border-white/10 shadow-lg"></div>
+        <p class="text-center text-sm text-pis-text-3 dark:text-slate-400 mt-4">All UK installation hubs - click a pin for local lead times.</p>
+      </div>
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href="/locations/london/" class="loc-tile">
+            <strong>London</strong>
+            <span>5–7 day install · 1,200+ reviews</span>
+          </a>
+          <a href="/locations/manchester/" class="loc-tile">
+            <strong>Manchester</strong>
+            <span>5–7 day install · 480+ reviews</span>
+          </a>
+          <a href="/locations/birmingham/" class="loc-tile">
+            <strong>Birmingham</strong>
+            <span>7–10 day install · 360+ reviews</span>
+          </a>
+          <a href="/locations/leeds/" class="loc-tile">
+            <strong>Leeds</strong>
+            <span>7–10 day install · 240+ reviews</span>
+          </a>
+          <a href="/locations/bristol/" class="loc-tile">
+            <strong>Bristol</strong>
+            <span>7–10 day install · 200+ reviews</span>
+          </a>
+          <a href="/locations/edinburgh/" class="loc-tile">
+            <strong>Edinburgh</strong>
+            <span>7–10 day install · 180+ reviews</span>
+          </a>
+          <a href="/locations/glasgow/" class="loc-tile">
+            <strong>Glasgow</strong>
+            <span>7–10 day install · 160+ reviews</span>
+          </a>
+          <a href="/locations/cardiff/" class="loc-tile">
+            <strong>Cardiff</strong>
+            <span>7–10 day install · 140+ reviews</span>
+          </a>
+          <a href="/locations/liverpool/" class="loc-tile">
+            <strong>Liverpool</strong>
+            <span>7–10 day install · 220+ reviews</span>
+          </a>
+          <a href="/locations/sheffield/" class="loc-tile">
+            <strong>Sheffield</strong>
+            <span>7–10 day install · 180+ reviews</span>
+          </a>
+          <a href="/locations/nottingham/" class="loc-tile">
+            <strong>Nottingham</strong>
+            <span>7–10 day install · 150+ reviews</span>
+          </a>
+          <a href="/locations/leicester/" class="loc-tile">
+            <strong>Leicester</strong>
+            <span>7–10 day install · 130+ reviews</span>
+          </a>
+          <a href="/locations/southampton/" class="loc-tile">
+            <strong>Southampton</strong>
+            <span>7–10 day install · 110+ reviews</span>
+          </a>
+          <a href="/locations/newcastle/" class="loc-tile">
+            <strong>Newcastle</strong>
+            <span>7–10 day install · 120+ reviews</span>
+          </a>
+          <a href="/locations/brighton/" class="loc-tile">
+            <strong>Brighton</strong>
+            <span>7–10 day install · 100+ reviews</span>
+          </a>
+          <a href="/locations/cambridge/" class="loc-tile">
+            <strong>Cambridge</strong>
+            <span>7–10 day install · 95+ reviews</span>
+          </a>
+        </div>
+
+        <div class="bg-white dark:bg-pis-ink-2 border border-slate-200 dark:border-white/10 rounded-3xl p-8 lg:p-10 text-center">
+          <h3 class="text-2xl lg:text-3xl font-extrabold tracking-tight mb-3">Not seeing your area?</h3>
+          <p class="text-pis-text-3 dark:text-slate-300 mb-6 max-w-xl mx-auto">We cover all of mainland UK. Drop your postcode and we'll confirm lead times for your area.</p>
+          <a href="/#quote" class="btn btn-primary">Check your postcode</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer data-pis-footer></footer>
+  <style>
+    .loc-tile { display:flex; flex-direction:column; gap:6px; padding:24px; background:#fff; border:1px solid #e2e8f0; border-radius:18px; transition:all .25s cubic-bezier(.22,1,.36,1); }
+    .loc-tile:hover { border-color:#0066FF; box-shadow:0 14px 30px -12px rgba(0,102,255,.25); transform:translateY(-3px); }
+    .loc-tile strong { font-size:1.25rem; font-weight:800; letter-spacing:-0.02em; color:#0d1117; }
+    .loc-tile span { font-size:.78rem; color:#64748b; }
+  </style>
+  <script src="/js/main.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    (function initUKMap() {
+      if (typeof L === 'undefined') return;
+      var map = L.map('pis-uk-map', { scrollWheelZoom: false, zoomControl: true })
+        .setView([54.5, -3], 6);
+      var isDark = document.documentElement.classList.contains('dark');
+      L.tileLayer(
+        isDark
+          ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+          : 'https://{s}.basemaps.cartocdn.com/voyager/{z}/{x}/{y}{r}.png',
+        { maxZoom: 18, attribution: '&copy; OpenStreetMap &copy; CARTO' }
+      ).addTo(map);
+
+      var locations = [
+        { name: 'London',      slug: 'london',      lead: '5-7 day install', reviews: '1,200+ reviews', lat: 51.5074, lon: -0.1278 },
+        { name: 'Manchester',  slug: 'manchester',  lead: '5-7 day install', reviews: '480+ reviews',   lat: 53.4808, lon: -2.2426 },
+        { name: 'Birmingham',  slug: 'birmingham',  lead: '7-10 day install', reviews: '360+ reviews',  lat: 52.4862, lon: -1.8904 },
+        { name: 'Leeds',       slug: 'leeds',       lead: '7-10 day install', reviews: '240+ reviews',  lat: 53.8008, lon: -1.5491 },
+        { name: 'Bristol',     slug: 'bristol',     lead: '7-10 day install', reviews: '200+ reviews',  lat: 51.4545, lon: -2.5879 },
+        { name: 'Edinburgh',   slug: 'edinburgh',   lead: '7-10 day install', reviews: '180+ reviews',  lat: 55.9533, lon: -3.1883 },
+        { name: 'Glasgow',     slug: 'glasgow',     lead: '7-10 day install', reviews: '160+ reviews',  lat: 55.8642, lon: -4.2518 },
+        { name: 'Cardiff',     slug: 'cardiff',     lead: '7-10 day install', reviews: '140+ reviews',  lat: 51.4816, lon: -3.1791 },
+        { name: 'Liverpool',   slug: 'liverpool',   lead: '7-10 day install', reviews: '220+ reviews',  lat: 53.4084, lon: -2.9916 },
+        { name: 'Sheffield',   slug: 'sheffield',   lead: '7-10 day install', reviews: '180+ reviews',  lat: 53.3811, lon: -1.4701 },
+        { name: 'Nottingham',  slug: 'nottingham',  lead: '7-10 day install', reviews: '150+ reviews',  lat: 52.9548, lon: -1.1581 },
+        { name: 'Leicester',   slug: 'leicester',   lead: '7-10 day install', reviews: '130+ reviews',  lat: 52.6369, lon: -1.1398 },
+        { name: 'Southampton', slug: 'southampton', lead: '7-10 day install', reviews: '110+ reviews',  lat: 50.9097, lon: -1.4044 },
+        { name: 'Newcastle',   slug: 'newcastle',   lead: '7-10 day install', reviews: '120+ reviews',  lat: 54.9783, lon: -1.6178 },
+        { name: 'Brighton',    slug: 'brighton',    lead: '7-10 day install', reviews: '100+ reviews',  lat: 50.8225, lon: -0.1372 },
+        { name: 'Cambridge',   slug: 'cambridge',   lead: '7-10 day install', reviews: '95+ reviews',   lat: 52.2053, lon:  0.1218 }
+      ];
+      var icon = L.divIcon({ className: 'pis-marker', iconSize: [18, 18], iconAnchor: [9, 9], popupAnchor: [0, -10] });
+      locations.forEach(function (l) {
+        L.marker([l.lat, l.lon], { icon: icon })
+          .bindPopup('<strong>' + l.name + '</strong><small>' + l.lead + ' &middot; ' + l.reviews + '</small><br><a href="/locations/' + l.slug + '/">View ' + l.name + ' &rarr;</a>')
+          .addTo(map);
+      });
+      // Re-render tiles when theme toggles
+      new MutationObserver(function () {
+        var nowDark = document.documentElement.classList.contains('dark');
+        if (nowDark === isDark) return;
+        isDark = nowDark;
+        map.eachLayer(function (layer) { if (layer instanceof L.TileLayer) map.removeLayer(layer); });
+        L.tileLayer(
+          isDark
+            ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+            : 'https://{s}.basemaps.cartocdn.com/voyager/{z}/{x}/{y}{r}.png',
+          { maxZoom: 18, attribution: '&copy; OpenStreetMap &copy; CARTO' }
+        ).addTo(map);
+      }).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    })();
+  </script>
+</body>
+</html>

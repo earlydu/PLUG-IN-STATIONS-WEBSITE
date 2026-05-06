@@ -1,0 +1,26 @@
+# Dependencies (precautionary — no package.json yet)
+node_modules/
+package-lock.json
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs / temp
+*.log
+*.tmp
+*.bak
+~$*
+
+# Stray empty / scratch folders
+New folder/
+
+# Large video assets (over GitHub's 100MB limit) — host externally for production
+videos/Eden Group Case Study V3.mp4

@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time to Plug In - A Guide to Home EV Charging</title>
+  <meta name="description" content="A guide to home EV charging - survey, costs, grants and install day. 14 pages, written by Plug In Stations' NICEIC engineers." />
+  <link rel="icon" type="image/svg+xml" href="/brand_assets/favicon.svg" />
+  <link rel="alternate icon" type="image/png" href="/brand_assets/favicon-512.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --pis-deep: #009245;
+      --pis-lime: #C1FF1D;
+      --pis-ink: #0A0E14;
+      --pis-ink-2: #161B22;
+      --pis-text: #0F172A;
+      --pis-text-2: #334155;
+      --pis-text-3: #64748B;
+      --pis-light: #F1F5F9;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; color: var(--pis-text); background: #ffffff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    @page { size: A4 landscape; margin: 0; }
+
+    .page {
+      width: 297mm; height: 210mm;
+      position: relative; overflow: hidden;
+      page-break-after: always;
+      background: #ffffff;
+    }
+    .page:last-of-type { page-break-after: auto; }
+
+    /* On-screen preview: show pages stacked with shadows */
+    @media screen {
+      body { background: #1a1f2b; padding: 24px; }
+      .page { margin: 0 auto 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.35); }
+      .controls { position: fixed; top: 16px; right: 16px; z-index: 100; }
+      .controls button { padding: 10px 18px; background: var(--pis-deep); color: #fff; border: 0; border-radius: 999px; font-family: inherit; font-weight: 700; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,.4); }
+    }
+    @media print { .controls { display: none; } }
+
+    /* ===== Page chrome ===== */
+    .page-header {
+      position: absolute; top: 0; left: 0; right: 0;
+      padding: 16mm 18mm 0;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 9pt; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--pis-text-3);
+    }
+    .page-header img { height: 20px; width: auto; }
+    .page-footer {
+      position: absolute; bottom: 12mm; left: 18mm; right: 18mm;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 8pt; color: var(--pis-text-3); border-top: 1px solid #E2E8F0; padding-top: 8mm;
+    }
+    .page-footer .page-num { font-weight: 700; color: var(--pis-deep); }
+
+    /* ===== Chapter number badge ===== */
+    .chapter-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--pis-deep); color: #fff;
+      padding: 4px 12px; border-radius: 999px;
+      font-size: 9pt; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase;
+    }
+
+    /* ===== Cover ===== */
+    .cover { background: linear-gradient(135deg, var(--pis-ink) 0%, #1F2937 100%); color: #fff; padding: 0; }
+    .cover-bg { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0.45; }
+    .cover-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,14,20,0.9) 0%, rgba(10,14,20,0.3) 60%, rgba(10,14,20,0.85) 100%); }
+    .cover-content { position: absolute; inset: 0; padding: 18mm 22mm; display: flex; flex-direction: column; justify-content: space-between; }
+    .cover-logo img { height: 72px; width: auto; filter: brightness(0) invert(1); }
+    .cover-title { max-width: 70%; }
+    .cover-eyebrow { font-size: 10pt; font-weight: 800; letter-spacing: 0.32em; text-transform: uppercase; color: var(--pis-lime); margin-bottom: 22px; }
+    .cover-h1 { font-size: 84pt; font-weight: 900; line-height: 0.92; letter-spacing: -0.025em; margin-bottom: 26px; }
+    .cover-h1 .pl { color: var(--pis-lime); }
+    .cover-sub { font-size: 16pt; font-weight: 500; color: rgba(255,255,255,0.85); line-height: 1.4; max-width: 600px; }
+    .cover-meta { display: flex; gap: 32px; font-size: 9pt; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+    .cover-meta strong { color: var(--pis-lime); }
+
+    /* ===== Standard chapter grid ===== */
+    .chapter { padding: 22mm 22mm 24mm; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+    .chapter-h1 { font-size: 32pt; font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; margin-top: 10px; max-width: 90%; }
+    .chapter-h1 .accent { color: var(--pis-deep); }
+    .chapter-lead { font-size: 12pt; font-weight: 500; color: var(--pis-text-2); margin-top: 10px; max-width: 80%; line-height: 1.5; }
+    .body-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 12mm; margin-top: 10mm; align-items: start; }
+    .body-grid.has-img { grid-template-columns: 1.1fr 1fr; }
+    .body-img {
+      aspect-ratio: 4/3; border-radius: 14px;
+      background-size: cover; background-position: center;
+      background-color: var(--pis-ink); position: relative; overflow: hidden;
+    }
+    .body-img::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, transparent 60%, rgba(0,146,69,0.15) 100%);
+    }
+
+    h2 { font-size: 14pt; font-weight: 800; line-height: 1.25; margin-bottom: 6px; }
+    h3 { font-size: 11pt; font-weight: 700; margin-top: 10px; margin-bottom: 3px; color: var(--pis-deep); }
+    p { font-size: 10pt; line-height: 1.5; color: var(--pis-text-2); margin-bottom: 6px; }
+    ul, ol { padding-left: 20px; }
+    li { font-size: 10pt; line-height: 1.45; color: var(--pis-text-2); margin-bottom: 3px; }
+    strong { color: var(--pis-text); }
+
+    /* ===== Stat callout ===== */
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; margin-top: 8mm; }
+    .stat-card {
+      background: var(--pis-light); border-radius: 10px;
+      padding: 12px 10px; text-align: center;
+      border: 1px solid #E2E8F0;
+    }
+    .stat-card .num { font-size: 26pt; font-weight: 900; line-height: 1; color: var(--pis-deep); letter-spacing: -0.03em; }
+    .stat-card .label { font-size: 8pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pis-text-3); margin-top: 5px; }
+    .stat-card.pink { background: #FBE4EE; border-color: #E50580; }
+    .stat-card.pink .num { color: #E50580; }
+    .stat-card.lime { background: rgba(193,255,29,0.18); border-color: var(--pis-deep); }
+    .stat-card.lime .num { color: var(--pis-deep); }
+
+    /* ===== Step list ===== */
+    .step-list { list-style: none; padding: 0; }
+    .step-list li {
+      display: grid; grid-template-columns: 38px 1fr; gap: 10px;
+      margin-bottom: 8px; padding-bottom: 8px;
+      border-bottom: 1px dashed #E2E8F0;
+    }
+    .step-list li:last-child { border-bottom: 0; padding-bottom: 0; margin-bottom: 0; }
+    .step-num {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--pis-deep); color: #fff;
+      display: grid; place-items: center;
+      font-weight: 900; font-size: 12pt;
+    }
+    .step-text strong { display: block; font-size: 10.5pt; color: var(--pis-text); margin-bottom: 1px; line-height: 1.2; }
+    .step-text span { font-size: 9.5pt; color: var(--pis-text-3); line-height: 1.4; }
+
+    /* ===== Tick list ===== */
+    .tick-list { list-style: none; padding: 0; }
+    .tick-list li {
+      display: grid; grid-template-columns: 20px 1fr; gap: 8px;
+      align-items: start; margin-bottom: 5px;
+      font-size: 10pt; line-height: 1.4; color: var(--pis-text-2);
+    }
+    .tick-list li::before {
+      content: ''; display: block;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--pis-lime);
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A0E14' stroke-width='3.5' stroke-linecap='round'><path d='M20 6 9 17l-5-5'/></svg>");
+      background-size: 12px; background-repeat: no-repeat; background-position: center;
+      margin-top: 2px;
+    }
+
+    /* ===== Bar chart (pure CSS) ===== */
+    .chart { display: grid; grid-template-columns: 100px 1fr; gap: 12px; margin-top: 10mm; }
+    .chart-row { display: contents; }
+    .chart-label { font-size: 10pt; font-weight: 700; color: var(--pis-text-2); align-self: center; }
+    .chart-bar-wrap { display: flex; align-items: center; gap: 10px; }
+    .chart-bar { height: 22px; border-radius: 4px; }
+    .chart-bar.petrol { background: #94A3B8; }
+    .chart-bar.avg { background: var(--pis-text-3); }
+    .chart-bar.octopus { background: #E50580; }
+    .chart-value { font-size: 10pt; font-weight: 800; color: var(--pis-text); }
+
+    /* ===== Comparison table ===== */
+    .comp-table { width: 100%; border-collapse: collapse; margin-top: 8mm; font-size: 9.5pt; }
+    .comp-table th, .comp-table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #E2E8F0; }
+    .comp-table thead th { font-size: 9pt; text-transform: uppercase; letter-spacing: 0.12em; color: var(--pis-text-3); font-weight: 800; }
+    .comp-table tbody th { color: var(--pis-text-2); font-weight: 600; }
+    .comp-table tbody td { color: var(--pis-text); font-weight: 600; }
+    .comp-table tr.recommended { background: rgba(193,255,29,0.18); }
+    .comp-table tr.recommended td:first-child::before { content: '★ '; color: var(--pis-deep); }
+
+    /* ===== Hero feature page (e.g. install day) ===== */
+    .hero-page { padding: 0; }
+    .hero-img-side {
+      position: absolute; top: 0; bottom: 0; left: 0;
+      width: 50%; background-size: cover; background-position: center;
+      background-color: var(--pis-ink);
+    }
+    .hero-text-side {
+      position: absolute; top: 0; bottom: 0; right: 0;
+      width: 50%; padding: 22mm 20mm 24mm;
+      display: flex; flex-direction: column; justify-content: center;
+      overflow: hidden;
+    }
+
+    /* ===== Final CTA page ===== */
+    .cta-page { background: linear-gradient(135deg, var(--pis-ink) 0%, var(--pis-ink-2) 100%); color: #fff; padding: 28mm 22mm; }
+    .cta-page .chapter-h1, .cta-page p, .cta-page strong, .cta-page li { color: #fff; }
+    .cta-page p { color: rgba(255,255,255,0.85); }
+    .cta-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 18mm; align-items: center; flex: 1; }
+    .cta-card {
+      background: var(--pis-lime); color: var(--pis-ink);
+      border-radius: 16px; padding: 20px;
+      font-weight: 700;
+    }
+    .cta-card .big { font-size: 22pt; font-weight: 900; line-height: 1.1; margin-bottom: 6px; }
+    .cta-card .small { font-size: 10pt; }
+    .cta-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(193,255,29,0.18); color: var(--pis-lime);
+      padding: 8px 16px; border-radius: 999px;
+      font-size: 9pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .cta-page .page-footer { border-top-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); }
+    .cta-page .page-footer .page-num { color: var(--pis-lime); }
+
+    /* ===== Page 13: detailed checklist (bold title + description) ===== */
+    .tick-list.checklist-detail li {
+      margin-bottom: 12px;
+      grid-template-columns: 22px 1fr;
+    }
+    .tick-list.checklist-detail li > div { display: flex; flex-direction: column; gap: 2px; }
+    .tick-list.checklist-detail strong {
+      display: block; font-size: 10.5pt; font-weight: 700;
+      color: var(--pis-text); letter-spacing: -0.005em;
+    }
+    .tick-list.checklist-detail span {
+      display: block; font-size: 9pt; line-height: 1.5;
+      color: var(--pis-text-3);
+    }
+
+    /* ===== Page 14: CTA layout ===== */
+    .tick-list.cta-tick-list li {
+      font-size: 9.5pt; line-height: 1.5;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 7px;
+    }
+    .tick-list.cta-tick-list li::before {
+      background: var(--pis-lime);
+    }
+    .cta-grid-mini {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 8px; margin-top: 8px;
+    }
+    .cta-card { line-height: 1.3; }
+    .cta-card .big { font-size: 19pt; font-weight: 900; line-height: 1.05; margin-bottom: 4px; }
+    .cta-card .big-sm { font-size: 11pt; font-weight: 800; line-height: 1.1; margin-bottom: 4px; }
+    .cta-card .small { font-size: 9pt; opacity: 0.85; }
+    .cta-card.cta-card-dark {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      padding: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="controls"><button onclick="window.print()">Save as PDF</button></div>
+
+  <!-- ===== Page 1 — COVER ===== -->
+  <div class="page cover">
+    <div class="cover-bg" style="background-image:url('https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1800&q=80')"></div>
+    <div class="cover-overlay"></div>
+    <div class="cover-content">
+      <div class="cover-logo">
+        <img src="/brand_assets/plugin%20stations%20logo.png" alt="Plug In Stations" />
+      </div>
+      <div class="cover-title">
+        <div class="cover-eyebrow">A Guide to Home EV Charging</div>
+        <h1 class="cover-h1">Time to <span class="pl">Plug In.</span></h1>
+        <p class="cover-sub">Everything you need to know about installing a home EV charger - in one comprehensive handbook from the UK's #1 Ohme installer.</p>
+      </div>
+      <div class="cover-meta">
+        <div><strong>14 PAGES</strong></div>
+        <div><strong>UK-SPECIFIC</strong></div>
+        <div><strong>UPDATED 2026</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Page 2 — Welcome ===== -->
+  <div class="page">
+    <div class="page-header"><span>Welcome</span><img src="/brand_assets/Plug%20In%20Stations%20Logo_black.png" alt="" /></div>
+    <div class="chapter">
+      <span class="chapter-badge">Chapter 01 - Welcome</span>
+      <h1 class="chapter-h1">A no-jargon look at <span class="accent">going electric</span> at home.</h1>
+      <p class="chapter-lead">If you're reading this you're either ordering an EV, just took delivery, or you've been driving one for a while and are tired of public charging.  This handbook will get you to a smart, fixed-price home install with as little drama as possible.</p>
+
+      <div class="body-grid">
+        <div>
+          <h2>Why home charging changes the maths</h2>
+          <p>A home charger paired with a smart tariff (we like Octopus Intelligent) drops your EV running cost to roughly a third of what you'd pay on average grid electricity - and roughly a sixth of what you'd pay for petrol over the same miles. That's the headline. The detail is in this book.</p>
+
+          <h2>Who we are</h2>
+          <p>Plug In Stations is a UK-wide installer with NICEIC, NAPIT, OZEV and Ohme accreditations.  We've installed over 25,000 chargers across England, Scotland and Wales. Every install gets a fixed-price quote up front, certified by qualified engineers, and a 5-year workmanship warranty.</p>
+        </div>
+        <div>
+          <h2>What's in this book</h2>
+          <ol class="step-list">
+            <li><div class="step-num">1</div><div class="step-text"><strong>The 5-step process</strong><span>From quote to commissioning, what happens and when.</span></div></li>
+            <li><div class="step-num">2</div><div class="step-text"><strong>Survey checklist</strong><span>What we look at to lock in your fixed-price quote.</span></div></li>
+            <li><div class="step-num">3</div><div class="step-text"><strong>Choosing your charger</strong><span>Ohme, Easee &amp; the rest, side-by-side.</span></div></li>
+            <li><div class="step-num">4</div><div class="step-text"><strong>Costs &amp; savings</strong><span>What you'll pay, and what you'll save - real numbers.</span></div></li>
+            <li><div class="step-num">5</div><div class="step-text"><strong>Smart tariffs &amp; grants</strong><span>How to halve your bill again with off-peak and OZEV.</span></div></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer"><span>Time to Plug In - A Guide to Home EV Charging</span><span class="page-num">02 / 14</span></div>
+  </div>
+
+  <!-- ===== Page 3 — The 5-step process ===== -->
+  <div class="page">
+    <div class="page-header"><span>The Process</span><img src="/brand_assets/Plug%20In%20Stations%20Logo_black.png" alt="" /></div>
+    <div class="chapter">
+      <span class="chapter-badge">Chapter 02 - Process</span>
+      <h1 class="chapter-h1">Quote to commissioning, <span class="accent">in 7-10 days.</span></h1>
+      <p class="chapter-lead">Most homes are charging within ten days of their first quote.  Here's the path - five steps, no surprises.</p>
+
+      <div class="body-grid has-img">
+        <ol class="step-list">
+          <li><div class="step-num">1</div><div class="step-text"><strong>Free remote survey</strong><span>Tell us your postcode, your EV, and how far the charger needs to run from your meter.  We send you a fixed-price quote within 24 hours - no engineer-on-the-doorstep needed.</span></div></li>
+          <li><div class="step-num">2</div><div class="step-text"><strong>You approve</strong><span>0% finance, OZEV grant claims and the Octopus Intelligent setup are all included in the quote if they apply.</span></div></li>
+          <li><div class="step-num">3</div><div class="step-text"><strong>We book your install</strong><span>Most slots are within a week. Pick a half-day, we'll send the engineer's name and ETA the day before.</span></div></li>
+          <li><div class="step-num">4</div><div class="step-text"><strong>Install day</strong><span>3 to 5 hours typically. We mount the charger, run the cable, fit the isolator, certify the work, walk you through the app, clean up.</span></div></li>
+          <li><div class="step-num">5</div><div class="step-text"><strong>Drive</strong><span>Plug in nightly.  Your monthly fuel spend drops the next day.  We handle warranty &amp; aftercare for 5 years.</span></div></li>
+        </ol>
+        <div class="body-img" style="background-image:url('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80')"></div>
+      </div>
+    </div>
+    <div class="page-footer"><span>Time to Plug In - A Guide to Home EV Charging</span><span class="page-num">03 / 14</span></div>
+  </div>
+
+  <!-- ===== Page 4 — Survey checklist ===== -->
+  <div class="page">
+    <div class="page-header"><span>Survey Checklist</span><img src="/brand_assets/Plug%20In%20Stations%20Logo_black.png" alt="" /></div>
+    <div class="chapter">
+      <span class="chapter-badge">Chapter 03 - Survey</span>
+      <h1 class="chapter-h1">What we check before <span class="accent">we lock the price.</span></h1>
+      <p class="chapter-lead">A fixed-price quote needs accurate inputs.  These are the questions we'll need answers to (most can be filled in from your sofa).</p>
+
+      <div class="body-grid">
+        <div>
+          <h2>About your home</h2>
+          <ul class="tick-list">
+            <li>Postcode and on/off-street parking arrangement</li>
+            <li>Distance from your electricity meter to the charger location (we'll confirm with photos)</li>
+            <li>Cable run preference: surface clipped, hidden in trunking, or fished through walls</li>
+            <li>Approximate age of your consumer unit (the one with all the trip-switches)</li>
+            <li>Any solar PV / home battery already installed</li>
+          </ul>
+
+          <h2>About your EV</h2>
+          <ul class="tick-list">
+            <li>Make &amp; model (and on-board AC charging speed - 7.4 kW or 11 kW)</li>
+            <li>Connector type (every modern UK EV is Type 2 + CCS)</li>
+            <li>Whether you've taken delivery, signed an order, or are leasing</li>
+          </ul>
+        </div>
+        <div>
+          <h2>About your tariff</h2>
+          <ul class="tick-list">
+            <li>Current energy supplier &amp; tariff (we'll suggest a switch if it's worth it)</li>
+            <li>Approximate annual mileage to size your savings</li>
+            <li>Whether you'd like Octopus Intelligent set up at install</li>
+          </ul>
+
+          <div class="stat-row" style="margin-top: 14mm">
+            <div class="stat-card lime">
+              <div class="num">24h</div>
+              <div class="label">Quote turnaround</div>
+            </div>
+            <div class="stat-card">
+              <div class="num">~94%</div>
+              <div class="label">No-extras installs</div>
+            </div>
+            <div class="stat-card">
+              <div class="num">5yr</div>
+              <div class="label">Workmanship warranty</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer"><span>Time to Plug In - A Guide to Home EV Charging</span><span class="page-num">04 / 14</span></div>
+  </div>
+
+  <!-- ===== Page 5 — Choosing your charger ===== -->
+  <div class="page">
+    <div class="page-header"><span>Choosing Your Charger</span><img src="/brand_assets/Plug%20In%20Stations%20Logo_black.png" alt="" /></div>
+    <div class="chapter">
+      <span class="chapter-badge">Chapter 04 - The Charger</span>
+      <h1 class="chapter-h1">Three units. <span class="accent">One right answer for you.</span></h1>
+      <p class="chapter-lead">Most UK homes are perfectly served by one of these three smart chargers.  Here's how they compare on the things that actually matter.</p>
+
+      <table class="comp-table">
+        <thead>
+          <tr><th>Feature</th><th>Ohme Home Pro</th><th>Ohme ePod</th><th>Easee One</th></tr>
+        </thead>
+        <tbody>
+          <tr class="recommended"><th>Power</th><td>7.4 kW AC</td><td>7.4 kW AC</td><td>7.4 kW / 22 kW (3-phase ready)</td></tr>
+          <tr><th>Connector</th><td>Type 2 tethered (5m)</td><td>Type 2 untethered</td><td>Type 2 untethered</td></tr>
+          <tr><th>Built-in display</th><td>Yes</td><td>No</td><td>LED status only</td></tr>
+          <tr><th>Octopus Intelligent</th><td>Native</td><td>Native</td><td>via Octopus + integration</td></tr>
+          <tr><th>Solar / PV ready</th><td>-</td><td>-</td><td>Yes (with sensor)</td></tr>
+          <tr><th>Dimensions</th><td>232 &times; 178 &times; 110 mm</td><td>177 &times; 152 &times; 100 mm</td><td>193 &times; 110 &times; 105 mm</td></tr>
+          <tr><th>Warranty</th><td>3yr unit / 5yr install</td><td>3yr unit / 5yr install</td><td>3yr unit / 5yr install</td></tr>
+          <tr><th>Best for</th><td>Single-EV homes, smart-tariff users</td><td>Tight spaces, flats</td><td>3-phase supply, future-proofing</td></tr>
+          <tr style="background: var(--pis-light)"><th><strong>Installed price from</strong></th><td><strong>&pound;999</strong></td><td><strong>&pound;849</strong></td><td><strong>&pound;949</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="page-footer"><span>Time to Plug In - A Guide to Home EV Charging</span><span class="page-num">05 / 14</span></div>
+  </div>
+
+  <!-- ===== Page 6 — Install day (hero) ===== -->
+  <div class="page hero-page">
+    <div class="hero-img-side" style="background-image:url('https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1200&q=80')"></div>
+    <div class="hero-text-side">
+      <span class="chapter-badge">Chapter 05 - Install Day</span>
+      <h1 class="chapter-h1" style="margin-top:14px">Half a day. <span class="accent">No mess.</span></h1>
+      <p class="chapter-lead" style="max-width:none">A typical install runs 3-5 hours from "knock on the door" to "fully commissioned and tested."  Here's what your engineer will do.</p>
+
+      <ol class="step-list" style="margin-top:14mm">
+        <li><div class="step-num">A</div><div class="step-text"><strong>Walk-around</strong><span>Confirm the charger location, cable route, and isolator point with you before drilling anything.</span></div></li>
+        <li><div class="step-num">B</div><div class="step-text"><strong>Mount &amp; cable</strong><span>Charger on the wall, cable run in trunking or surface-clipped per your preference, ELV-rated cable to spec.</span></div></li>
+        <li><div class="step-num">C</div><div class="step-text"><strong>Earthing &amp; protection</strong><span>Type A RCBO and earthing strategy fitted to your supply (PME, TT or earth-rod where required).</span></div></li>
+        <li><div class="step-num">D</div><div class="step-text"><strong>Test, certify, register</strong><span>EICR, NICEIC certification, DNO notification all submitted on your behalf.</span></div></li>
+        <li><div class="step-num">E</div><div class="step-text"><strong>App walk-through</strong><span>Set up the Ohme app, connect Octopus Intelligent, schedule a test charge.  Done.</span></div></li>
+      </ol>
+    </div>
+    <div class="page-footer"><span>Time to Plug In - A Guide to Home EV Charging</span><span class="page-num">06 / 14</span></div>
+  </div>
+
+  <!-- ===== Page 7 — Costs ===== -->
+  <div class="page">
+    <div class="page-header"><span>Costs</span><img src="/brand_assets/Plug%20In%20Stations%20Logo_black.png" alt="" /></div>
+    <div class="chapter">
+      <span class="chapter-badge">Chapter 06 - Costs</span>
+      <h1 class="chapter-h1">What you'll pay <span class="accent">to install.</span></h1>
+      <p class="chapter-lead">Most standard installs land between &pound;850 and &pound;1,400 fully fitted, including charger, labour, certification, isolator and DNO notification.</p>
+
+      <div class="stat-row" style="margin-top: 12mm">
+        <div class="stat-card"><div class="num">&pound;849</div><div class="label">Smallest unit fitted</div></div>
+        <div class="stat-card lime"><div class="num">&pound;999</div><div class="label">Most popular package</div></div>
+        <div class="stat-card"><div class="num">&pound;1,400</div><div class="label">Premium / 3-phase</div></div>
+      </div>
+
+      <div class="body-grid" style="margin-top: 14mm">
+        <div>
+          <h2>What's always included</h2>
+          <ul class="tick-list">
+            <li>Smart EV charger (Ohme / Easee / Hypervolt as quoted)</li>
+            <li>Up to 10 metres of cabling, surface-clipped or in trunking</li>
+            <li>Type A RCBO, dedicated isolator, earthing strategy</li>
+            <li>NICEIC certification &amp; DNO notification</li>
+            <li>App setup &amp; tariff configuration</li>
+            <li>5-year workmanship warranty</li>
+          </ul>
+        </div>
+        <div>
+          <h2>What might add cost</h2>
+          <ul class="tick-list">
+            <li>Cable run over 10 metres (we'll quote per metre upfront)</li>
+            <li>Consumer unit upgrade if yours is BS 3036 / pre-2008</li>
+            <li>Earth-rod install for TT supplies</li>
+            <li>3-phase installation (where supply is available)</li>
+            <li>Trenching, fishing through stud walls, decorative fascia</li>
+          </ul>
+          <p style="margin-top:12px"><strong>Every cost is quoted before you commit.</strong>  No engineer arrives to surprise you.</p>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer"><span>Time to Plug In - A Guide to Home EV Charging</span><span class="page-num">07 / 14</span></div>
+  </div>
+
+  <!-- ===== Page 8 — Savings ===== -->
+  <div class="page">
+    <div class="page-header"><span>Savings</span><img src="/brand_assets/Plug%20In%20Stations%20Logo_black.png" alt="" /></div>
+    <div class="chapter">
+      <span class="chapter-badge">Chapter 07 - Savings</span>
+      <h1 class="chapter-h1">What you'll save <span class="accent">every year.</span></h1>
+      <p class="chapter-lead">Below: a typical 60 kWh BEV with a 240-mile real-world range, driving 7,000 miles a year.</p>
+
+      <h2 style="margin-top:10mm">Annual fuel cost</h2>
+      <div class="chart">
+        <div class="chart-row">
+          <div class="chart-label">Petrol (45 MPG)</div>
+          <div class="chart-bar-wrap">
+            <div class="chart-bar petrol" style="width: 95%"></div>
+            <div class="chart-value">&pound;1,020</div>
+          </div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">Average UK tariff</div>
+          <div class="chart-bar-wrap">
+            <div class="chart-bar avg" style="width: 44%"></div>
+            <div class="chart-value">&pound;475</div>
+          </div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">Octopus Intelligent</div>
+          <div class="chart-bar-wrap">
+            <div class="chart-bar octopus" style="width: 14%"></div>
+            <div class="chart-value">&pound;150</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="body-grid" style="margin-top: 12mm">
+        <div>
+          <h2>The headline</h2>
+          <p>Switching to home charging on an EV-friendly tariff saves the typical UK driver <strong style="color:var(--pis-deep)">&pound;800 - &pound;900 per year</strong> on fuel alone, before you count lower servicing costs.</p>
+          <p>Heavier-mileage drivers (15,000+) typically see savings of <strong>&pound;1,800 +</strong>.</p>
+        </div>
+        <div>
+          <h2>Plus what you don't pay</h2>
+          <ul class="tick-list">
+            <li>No engine oil changes or filters</li>
+            <li>Less brake wear thanks to regenerative braking</li>
+            <li>3-5% benefit-in-kind for company cars</li>
+            <li>No fuel-price shocks - you set your charging schedule</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer"><span>Time to Plug In - A Guide to Home EV Charging</span><span class="page-num">08 / 14</span></div>
+  </div>
+
+  <!-- ===== Page 9 — Smart tariffs ===== -->
+  <div class="page">
+    <div class="page-header"><span>Smart Tariffs</span><img src="/brand_assets/Plug%20In%20Stations%20Logo_black.png" alt="" /></div>
+    <div class="chapter">
+      <span class="chapter-badge">Chapter 08 - Smart Tariffs</span>
+      <h1 class="chapter-h1">Cheap power <span class="accent">while you sleep.</span></h1>
+      <p class="chapter-lead">Smart tariffs are the multiplier on home charging.  Plug in at any time, the charger talks to the tariff, the energy lands during the cheap window.</p>
+
+      <div class="body-grid">
+        <div>
+          <h2>Octopus Intelligent (our pick)</h2>
+          <p>The benchmark.  Plug in any time, the app figures out the cheapest 6 hours overnight (typically 11.30pm-5.30am) and charges then.  Off-peak rate is around <strong>7-8.5p/kWh</strong>.  Works natively with every charger we install.</p>
+          <h3>Why we like it</h3>
+          <ul class="tick-list">
+            <li>You don't think about it - the app does the work</li>
+            <li>Works with PHEVs as well as full BEVs</li>
+            <li>Boost button if you need to charge now</li>
+            <li>Octopus customer service is excellent</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Other tariffs worth a look</h2>
+          <p><strong>Octopus Go</strong> - simpler, 4-hour fixed off-peak window.  Good if you're predictable.</p>
+          <p><strong>EDF GoElectric / British Gas EV</strong> - fixed 5-hour cheap windows, more variability in standing charges.</p>
+          <p><strong>OVO Charge Anytime</strong> - smart-tariff alternative if you're already with OVO.</p>
+
+          <div class="stat-card pink" style="margin-top: 14mm">
+            <div class="num">&pound;700</div>
+            <div class="label">Typical extra annual saving on Octopus IO vs avg tariff</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer"><span>Time to Plug In - A Guide to Home EV Charging</span><span class="page-num">09 / 14</span></div>
+  </div>
+
+  <!-- ===== Page 10 — Grants & Finance ===== -->
+  <div class="page">
+    <div class="page-header"><span>Grants &amp; Finance</span><img src="/brand_assets/Plug%20In%20Stations%20Logo_black.png" alt="" /></div>
+    <div class="chapter">
+      <span class="chapter-badge">Chapter 09 - Grants &amp; Finance</span>
+      <h1 class="chapter-h1">Who pays less. <span class="accent">And how.</span></h1>
+      <p class="chapter-lead">Three ways the install can cost you less.  We'll handle the paperwork on all of them.</p>
+
+      <div class="body-grid has-img">
+        <div>
+          <h2>1. The OZEV EV Chargepoint Grant - up to &pound;350</h2>
+          <p>If you rent, own a flat, or run a business, the OZEV grant covers up to &pound;350 of the install cost.  Owner-occupier homeowners no longer qualify (residential grant ended 2022).  The grant comes off your invoice up front, not as a refund.</p>
+          <ul class="tick-list">
+            <li>Renters - landlord consent required (we provide a template)</li>
+            <li>Flat owners - no extra paperwork beyond the standard claim</li>
+            <li>Businesses - up to &pound;350 per socket, max 40 sockets</li>
+          </ul>
+
+          <h2 style="margin-top:10mm">2. 0% finance via Bumper</h2>
+          <p>Spread the install cost over 12-36 months at 0% interest.  Soft credit check, no deposit, takes a few minutes online.  The OZEV grant still applies.</p>
+        </div>
+        <div class="body-img" style="background-image:url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80')"></div>
+      </div>
+
+      <h2 style="margin-top:8mm">3. Salary sacrifice (BIK savings of 25-50%)</h2>
+      <p>If your employer offers an EV salary-sacrifice scheme, you can lease an EV (and often the install) out of your gross salary.  Benefit-in-kind on EVs is around 3% in 2026, vs 25%+ on petrol cars.  Worth asking your HR team.</p>
+    </div>
+    <div class="page-footer"><span>Time to Plug In - A Guide to Home EV Charging</span><span class="page-num">10 / 14</span></div>
+  </div>
+
+  <!-- ===== Page 11 — Aftercare ===== -->
+  <div class="page">
+    <div class="page-header"><span>Aftercare &amp; Warranty</span><img src="/brand_assets/Plug%20In%20Stations%20Logo_black.png" alt="" /></div>
+    <div class="chapter">
+      <span class="chapter-badge">Chapter 10 - Aftercare</span>
+      <h1 class="chapter-h1">Five years on us. <span class="accent">Three years on the unit.</span></h1>
+      <p class="chapter-lead">A home charger is a 7-day-a-week bit of kit.  We back it with the longest workmanship cover in the UK.</p>
+
+      <div class="body-grid">
+        <div>
+          <h2>5-year workmanship warranty</h2>
+          <p>If anything we installed goes wrong - cable, isolator, mounting, certification - we'll come back and fix it free for five years.  Most installers offer 12 months.</p>
+
+          <h2>3-year manufacturer warranty</h2>
+          <p>Ohme, Easee, Hypervolt - all bring 3-year warranties on the unit itself.  We mediate the claim if anything fails so you don't have to talk to the manufacturer directly.</p>
+
+          <h2>Phone, app or email</h2>
+          <p>0203 795 7117 in office hours, or message us via the customer portal any time.  Most problems are resolved without a callout.</p>
+        </div>
+        <div>
+          <h2>What's covered</h2>
+          <ul class="tick-list">
+            <li>Faulty units (manufacturer claim handled by us)</li>
+            <li>Loose connections, isolator faults, cable issues</li>
+            <li>App / Wi-Fi / OCPP setup problems</li>
+            <li>DNO and certification re-submissions if needed</li>
+          </ul>
+
+          <h2 style="margin-top:10mm">What's not covered</h2>
+          <ul class="tick-list">
+            <li>Damage caused by accidental impact or weather extremes</li>
+            <li>Modifications by another electrician</li>
+            <li>Charger swaps for an unrelated upgrade (we'll quote a fair price)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer"><span>Time to Plug In - A Guide to Home EV Charging</span><span class="page-num">11 / 14</span></div>
+  </div>
+
+  <!-- ===== Page 12 — FAQ ===== -->
+  <div class="page">
+    <div class="page-header"><span>Common Questions</span><img src="/brand_assets/Plug%20In%20Stations%20Logo_black.png" alt="" /></div>
+    <div class="chapter">
+      <span class="chapter-badge">Chapter 11 - FAQ</span>
+      <h1 class="chapter-h1">The questions we get <span class="accent">most often.</span></h1>
+      <p class="chapter-lead">Short answers below.  Longer answers in our online guides at pluginstations.co.uk/guides.</p>
+
+      <div class="body-grid">
+        <div>
+          <h3>Can I install if I don't have my EV yet?</h3>
+          <p>Yes.  Most customers install ahead of their EV arriving.  A signed order or lease counts as proof of vehicle for the OZEV grant.</p>
+
+          <h3>Do I need 3-phase power?</h3>
+          <p>No.  Standard UK homes have single-phase, which charges at 7.4 kW - enough to fully charge any EV overnight.  3-phase is only useful for commercial or high-demand installs.</p>
+
+          <h3>How long does an install take?</h3>
+          <p>3-5 hours for a standard install.  Up to a day if a consumer unit upgrade or earth rod is needed.</p>
+        </div>
+        <div>
+          <h3>Can the cable be hidden?</h3>
+          <p>Yes - in trunking, fished through walls, or run along skirting boards.  Tell us your preference at quote stage.</p>
+
+          <h3>Is the charger weather-proof?</h3>
+          <p>Yes.  All units we install are IP54 or better - rated for permanent outdoor use in UK weather.</p>
+
+          <h3>What if I move house?</h3>
+          <p>You can take the charger with you (we can decommission and re-install at the new property for a fixed fee).  Most movers leave it as a value-add for the buyer.</p>
+
+          <h3>Will it trip my main fuse?</h3>
+          <p>Modern smart chargers have dynamic load balancing - they automatically reduce charging speed if the rest of the house is drawing heavy load (oven, kettle, immersion).  No, it won't trip.</p>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer"><span>Time to Plug In - A Guide to Home EV Charging</span><span class="page-num">12 / 14</span></div>
+  </div>
+
+  <!-- ===== Page 13 — Going-electric checklist ===== -->
+  <div class="page">
+    <div class="page-header"><span>Checklist</span><img src="/brand_assets/Plug%20In%20Stations%20Logo_black.png" alt="" /></div>
+    <div class="chapter">
+      <span class="chapter-badge">Chapter 12 - Checklist</span>
+      <h1 class="chapter-h1">Going electric, <span class="accent">in eight ticks.</span></h1>
+      <p class="chapter-lead">A summary checklist you can tear out and use.  Or screenshot, anyway.</p>
+
+      <div class="body-grid" style="margin-top: 12mm">
+        <ul class="tick-list checklist-detail">
+          <li><div><strong>Pick your EV</strong><span>Aim for 200 miles real-world range.  Confirm WLTP, max AC kW, connector type.</span></div></li>
+          <li><div><strong>Confirm parking</strong><span>Off-street is required for OZEV grants.  On-street solutions exist for some homes.</span></div></li>
+          <li><div><strong>Get a free Plug In Stations quote</strong><span>24-hour turnaround.  Includes survey, fixed price, certification.</span></div></li>
+          <li><div><strong>Check OZEV eligibility</strong><span>Renters, flat owners and businesses qualify for up to &pound;350 off.</span></div></li>
+        </ul>
+        <ul class="tick-list checklist-detail">
+          <li><div><strong>Decide on finance</strong><span>Pay up front, or spread over 12-36 months at 0% via Bumper - same price.</span></div></li>
+          <li><div><strong>Pick a charger</strong><span>Ohme Home Pro for most, ePod for tight spaces, Easee for 3-phase headroom.</span></div></li>
+          <li><div><strong>Switch to a smart tariff</strong><span>Octopus Intelligent at ~7p/kWh off-peak.  We set this up on install day.</span></div></li>
+          <li><div><strong>Drive</strong><span>Plug in nightly.  Wake up full.  Save &pound;700+ a year on fuel alone.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="stat-row" style="margin-top: 10mm">
+        <div class="stat-card lime"><div class="num">7</div><div class="label">Days from quote to install</div></div>
+        <div class="stat-card pink"><div class="num">&pound;700+</div><div class="label">Saved per year on fuel</div></div>
+        <div class="stat-card"><div class="num">25,000+</div><div class="label">UK installs by Plug In Stations</div></div>
+      </div>
+    </div>
+    <div class="page-footer"><span>Time to Plug In - A Guide to Home EV Charging</span><span class="page-num">13 / 14</span></div>
+  </div>
+
+  <!-- ===== Page 14 — Final CTA ===== -->
+  <div class="page cta-page">
+    <div class="page-header" style="color:rgba(255,255,255,0.6)"><span>Get Your Quote</span><img src="/brand_assets/plugin%20stations%20logo.png" alt="" style="filter:brightness(0) invert(1)" /></div>
+    <div class="chapter" style="padding-top: 22mm">
+      <span class="cta-pill">Ready when you are</span>
+      <h1 class="chapter-h1" style="margin-top: 14px; font-size: 32pt">Time to plug in. <span style="color:var(--pis-lime)">For real.</span></h1>
+      <p class="chapter-lead" style="color: rgba(255,255,255,0.85); max-width: 80%; margin-top: 12px">A fixed-price quote within 24 hours.  Most installs in 7-10 days.  Five-year workmanship warranty on every job.</p>
+
+      <div class="body-grid" style="margin-top: 10mm">
+        <ul class="tick-list cta-tick-list">
+          <li>UK's #1 Ohme installer - 4.7&#9733; on Trustpilot, 4.9&#9733; on Google</li>
+          <li>OZEV-approved for residential &amp; business grant claims</li>
+          <li>NICEIC certified, 5-year workmanship warranty</li>
+          <li>0% finance via Bumper - from &pound;25/mo, no deposit</li>
+          <li>Octopus Intelligent set up at install</li>
+          <li>We plant a tree for every install completed</li>
+        </ul>
+        <div>
+          <div class="cta-card">
+            <div class="big">Get a free quote</div>
+            <div class="small">pluginstations.co.uk/#quote</div>
+          </div>
+          <div class="cta-grid-mini">
+            <div class="cta-card cta-card-dark">
+              <div class="big-sm" style="color:var(--pis-lime)">0203 795 7117</div>
+              <div class="small">Mon-Fri 8am-6pm</div>
+            </div>
+            <div class="cta-card cta-card-dark">
+              <div class="big-sm" style="color:var(--pis-lime); word-break: break-all">enquiries@<wbr>plug-in-stations.com</div>
+              <div class="small">24h reply</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer"><span>&copy; 2026 Plug In Stations Ltd  &middot;  Co. No. 12345678  &middot;  pluginstations.co.uk</span><span class="page-num">14 / 14</span></div>
+  </div>
+</body>
+</html>

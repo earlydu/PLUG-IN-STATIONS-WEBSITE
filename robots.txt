@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.pluginstations.co.uk/sitemap.xml
+
+# Disallow non-public utility paths
+Disallow: /thank-you/

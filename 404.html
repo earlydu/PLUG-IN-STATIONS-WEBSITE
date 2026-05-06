@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found | Plug In Stations</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230066FF'/%3E%3Cpath d='M13 2 4.5 12.5h6L9.5 22 19.5 11.5h-6z' fill='%23fff'/%3E%3C/svg%3E" />
+  
+  <script>(function(){var t=localStorage.getItem('pis_theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark');})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/js/tw-config.js"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="bg-white dark:bg-pis-ink text-pis-text dark:text-white antialiased font-sans">
+  <header data-pis-header></header>
+
+  <main class="pt-[100px]">
+    <section class="relative bg-hero-radial min-h-[80vh] grid place-items-center px-5 py-16 overflow-hidden">
+      <div class="hero-grid"></div>
+      <div class="relative max-w-2xl mx-auto text-center">
+        <p class="font-display text-[7rem] sm:text-[10rem] leading-none mb-2 text-pis-lime">404</p>
+        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-4">This circuit doesn't exist.</h1>
+        <p class="text-slate-300 mb-9">The page you're after has been moved or never plugged in. Try one of these:</p>
+        <div class="grid sm:grid-cols-2 gap-3 mb-8">
+          <a href="/" class="card-glass rounded-2xl p-5 text-left hover:border-pis-lime transition-colors block">
+            <p class="font-bold mb-1">Homepage</p>
+            <p class="text-sm text-slate-400">Start over</p>
+          </a>
+          <a href="/smart-install-checker/" class="card-glass rounded-2xl p-5 text-left hover:border-pis-lime transition-colors block">
+            <p class="font-bold mb-1">Smart Install Checker</p>
+            <p class="text-sm text-slate-400">60-second suitability check</p>
+          </a>
+          <a href="/chargers/" class="card-glass rounded-2xl p-5 text-left hover:border-pis-lime transition-colors block">
+            <p class="font-bold mb-1">Browse EV chargers</p>
+            <p class="text-sm text-slate-400">All hardware we install</p>
+          </a>
+          <a href="/#quote" class="card-glass rounded-2xl p-5 text-left hover:border-pis-lime transition-colors block">
+            <p class="font-bold mb-1">Get a quote</p>
+            <p class="text-sm text-slate-400">Fixed price within 24h</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer data-pis-footer></footer>
+  <script src="/js/main.js"></script>
+</body>
+</html>

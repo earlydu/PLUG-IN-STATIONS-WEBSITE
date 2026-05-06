@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EV Charging Cost Calculator UK - vs Petrol Comparison | Plug In Stations</title>
+  <meta name="description" content="How much does it cost to charge your EV at home? Calculate weekly, monthly and annual charging costs vs petrol - including off-peak smart tariff savings." />
+  <link rel="canonical" href="https://www.pluginstations.co.uk/tools/charging-cost-calculator/" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230066FF'/%3E%3Cpath d='M13 2 4.5 12.5h6L9.5 22 19.5 11.5h-6z' fill='%23fff'/%3E%3C/svg%3E" />
+  
+  <script>(function(){var t=localStorage.getItem('pis_theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark');})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/js/tw-config.js"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="bg-white dark:bg-pis-ink text-pis-text dark:text-white antialiased font-sans">
+  <header data-pis-header></header>
+
+  <main class="pt-[100px]">
+    <section class="bg-pis-light dark:bg-white/[0.015] border-b border-slate-200 dark:border-white/10 py-10">
+      <div class="max-w-5xl mx-auto px-5 lg:px-8">
+        <nav class="flex items-center gap-2 text-sm text-pis-text-3 dark:text-slate-400 mb-6" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-pis-deep dark:hover:text-pis-lime">Home</a><span>/</span>
+          <a href="/tools/cost-calculator/" class="hover:text-pis-deep dark:hover:text-pis-lime">Tools</a><span>/</span>
+          <span class="text-pis-text dark:text-white">Charging Cost Calculator</span>
+        </nav>
+        <span class="eyebrow mb-4"><span class="eyebrow-dot"></span>FREE TOOL</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">How much does it cost to charge your EV?</h1>
+        <p class="text-lg text-pis-text-3 dark:text-slate-300 max-w-2xl">Pick your car, your tariff, your weekly miles - see your real annual cost and how much you save vs petrol.</p>
+      </div>
+    </section>
+
+    <section class="py-14 lg:py-20">
+      <div class="max-w-5xl mx-auto px-5 lg:px-8">
+        <div data-tool="charging-cost" class="grid lg:grid-cols-5 gap-8">
+          <!-- Inputs -->
+          <div class="lg:col-span-2 bg-white dark:bg-pis-ink-2 rounded-3xl p-7 lg:p-8 shadow-sm border border-slate-200 dark:border-white/10 space-y-5 self-start">
+            <h2 class="text-lg font-bold mb-2">Your driving</h2>
+            <label class="field field-light">
+              <span>Vehicle</span>
+              <select name="vehicle"></select>
+            </label>
+            <label class="field field-light">
+              <span>Home tariff</span>
+              <select name="tariff"></select>
+            </label>
+            <label class="field field-light">
+              <span>Weekly miles</span>
+              <input type="number" name="miles" value="180" min="10" max="2000" />
+            </label>
+            <p class="text-xs text-pis-text-3 dark:text-slate-400 leading-relaxed">Calculations assume ~85% of charging happens during off-peak windows when on a smart EV tariff. Petrol comparison based on 45 MPG and 145p/litre.</p>
+          </div>
+
+          <!-- Results -->
+          <div class="lg:col-span-3">
+            <div class="bg-gradient-to-br from-pis-ink via-pis-ink-2 to-pis-ink-3 text-white rounded-3xl p-7 lg:p-9 mb-5 relative overflow-hidden">
+              <div class="hero-grid opacity-50"></div>
+              <div class="relative">
+                <span class="live-indicator mb-3">LIVE</span>
+                <p class="text-sm text-slate-400 mb-1">Annual EV charging cost</p>
+                <p class="font-extrabold text-5xl lg:text-6xl tracking-tight mb-1 result-bignum"><span data-out="year">£0</span></p>
+                <p class="text-sm text-slate-400 mb-7">Based on your tariff &amp; weekly miles</p>
+
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                  <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                    <p class="text-xs uppercase tracking-wider text-slate-400 mb-1">Per week</p>
+                    <p class="text-2xl font-extrabold tracking-tight" data-out="week">£0</p>
+                  </div>
+                  <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                    <p class="text-xs uppercase tracking-wider text-slate-400 mb-1">Per month</p>
+                    <p class="text-2xl font-extrabold tracking-tight" data-out="month">£0</p>
+                  </div>
+                </div>
+
+                <div class="bg-pis-lime/10 border border-pis-lime/30 rounded-2xl p-5">
+                  <p class="text-xs uppercase tracking-wider text-pis-lime font-bold mb-2">YOUR ANNUAL SAVING vs PETROL</p>
+                  <div class="flex items-end gap-3 mb-1">
+                    <p class="result-bignum"><span data-out="saving">£0</span></p>
+                    <p class="text-sm text-slate-300 mb-2"><span data-out="savingPct">0%</span> cheaper</p>
+                  </div>
+                  <p class="text-sm text-slate-300">Petrol equivalent: <span data-out="petrolYear" class="font-semibold text-white">£0</span>/year</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white dark:bg-pis-ink-2 rounded-3xl p-7 border border-slate-200 dark:border-white/10 shadow-sm">
+              <p class="text-sm text-pis-text-3 dark:text-slate-300 mb-4">Pair your EV charger with a smart tariff like Octopus Intelligent for off-peak rates. We'll set this up at install.</p>
+              <a href="/#quote" class="btn btn-primary btn-lg w-full">Get a quote &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-14 grid sm:grid-cols-3 gap-4">
+          <a href="/tools/cost-calculator/" class="bg-white dark:bg-pis-ink-2 border border-slate-200 dark:border-white/10 rounded-2xl p-5 lift hover:shadow-md hover:border-pis-deep block">
+            <p class="text-xs font-bold tracking-[0.14em] text-pis-deep uppercase mb-1.5">INSTALL COST</p>
+            <p class="font-bold mb-1">Cost Calculator</p>
+            <p class="text-sm text-pis-text-3 dark:text-slate-300">Estimate your install cost</p>
+          </a>
+          <a href="/tools/grant-checker/" class="bg-white dark:bg-pis-ink-2 border border-slate-200 dark:border-white/10 rounded-2xl p-5 lift hover:shadow-md hover:border-pis-deep block">
+            <p class="text-xs font-bold tracking-[0.14em] text-pis-deep uppercase mb-1.5">GRANTS</p>
+            <p class="font-bold mb-1">Grant Checker</p>
+            <p class="text-sm text-pis-text-3 dark:text-slate-300">Check OZEV eligibility</p>
+          </a>
+          <a href="/tools/compare-chargers/" class="bg-white dark:bg-pis-ink-2 border border-slate-200 dark:border-white/10 rounded-2xl p-5 lift hover:shadow-md hover:border-pis-deep block">
+            <p class="text-xs font-bold tracking-[0.14em] text-pis-deep uppercase mb-1.5">COMPARE</p>
+            <p class="font-bold mb-1">Compare EV Chargers</p>
+            <p class="text-sm text-pis-text-3 dark:text-slate-300">Side-by-side spec compare</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer data-pis-footer></footer>
+  <script src="/js/main.js"></script>
+  <script src="/js/tools.js"></script>
+</body>
+</html>
