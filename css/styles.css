@@ -74,12 +74,9 @@ h1, h2, h3, h4, h5, h6 { letter-spacing: -0.025em; font-weight: 700; }
   height: max(56.25vw, 100vh);
   border: 0;
   pointer-events: none !important;
-  opacity: 0;
-  transition: opacity 1.4s cubic-bezier(.22,1,.36,1);
 }
-.hero-video-frame.is-ready iframe { opacity: 1; }
-/* When the .hero-video-frame is a native <video> (local mp4), keep it visible and cover the area */
-video.hero-video-frame { opacity: 1; object-fit: cover; }
+/* Native <video> (local mp4) and <iframe class="hero-video-frame"> (YouTube embed) are always visible */
+video.hero-video-frame, iframe.hero-video-frame { opacity: 1; object-fit: cover; }
 
 /* ===== Accreditation logos (static row, full-colour) ===== */
 .accred-logo {
