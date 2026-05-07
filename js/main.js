@@ -518,69 +518,7 @@
     });
   });
 
-  /* ============================================================
-     Hero background video — segment looper
-     Plays only the highlights from /videos/Eden Group Case Study V3.mp4
-     in a loop: 0:18–0:21 · 0:30–0:38 · 1:18–1:23
-     Muted, hard cuts, loops forever.
-     ============================================================ */
-  (function heroVideoLoop() {
-    const v = document.querySelector('video.hero-video-frame') || document.getElementById('heroVideo');
-    if (!v) return;
-
-    // [startSec, endSec] for each segment
-    const SEGMENTS = [
-      [18, 21],   // 0:18 – 0:21
-      [30, 38],   // 0:30 – 0:38
-      [78, 83],   // 1:18 – 1:23
-    ];
-    let i = 0;
-    let kickedOff = false;
-
-    const seekTo = (sec) => { try { v.currentTime = sec; } catch (_) {} };
-    const playSafe = () => {
-      try {
-        const p = v.play();
-        if (p && typeof p.catch === 'function') p.catch(() => {});
-      } catch (_) {}
-    };
-
-    // Initial kick-off — seek to first segment as soon as metadata is available.
-    const kickOff = () => {
-      if (kickedOff) return;
-      if (v.readyState < 1 || !isFinite(v.duration)) return;
-      kickedOff = true;
-      seekTo(SEGMENTS[0][0]);
-      playSafe();
-    };
-
-    v.addEventListener('loadedmetadata', kickOff);
-    v.addEventListener('loadeddata',     kickOff);
-    v.addEventListener('canplay',        kickOff);
-
-    // Segment switching — fires ~4×/s during playback.
-    v.addEventListener('timeupdate', () => {
-      if (!kickedOff) return;
-      const end = SEGMENTS[i][1];
-      if (v.currentTime >= end) {
-        i = (i + 1) % SEGMENTS.length;
-        seekTo(SEGMENTS[i][0]);
-        playSafe();
-      }
-    });
-
-    // Defensive: if the video reaches its natural end (e.g. browser races the seek), restart from segment 0.
-    v.addEventListener('ended', () => {
-      i = 0;
-      seekTo(SEGMENTS[0][0]);
-      playSafe();
-    });
-
-    // If metadata is already loaded by the time this runs, kick off immediately.
-    kickOff();
-  })();
-
-  /* ============================================================
+/* ============================================================
      Featured-video carousel — arrows, dots, swipe, peek-next
      ============================================================ */
   document.querySelectorAll('[data-video-carousel]').forEach(carousel => {

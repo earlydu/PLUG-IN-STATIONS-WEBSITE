@@ -57,12 +57,18 @@
 
     <!-- ============== HERO ============== -->
     <section class="relative bg-pis-ink text-white pt-[100px] overflow-hidden" id="hero">
-      <!-- Video background (local mp4, autoplay, muted, looped) -->
+      <!-- Video background (YouTube embed, autoplay muted, looped, no chrome) -->
       <div class="hero-video-bg" aria-hidden="true">
         <div class="hero-video-fallback"></div>
-        <video class="hero-video-frame" autoplay muted playsinline preload="auto" poster="" id="heroVideo">
-          <source src="/videos/Eden%20Group%20Case%20Study%20V3.mp4" type="video/mp4" />
-        </video>
+        <div class="hero-video-frame is-ready" id="heroVideo">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/EbnNHAXsx3Q?autoplay=1&mute=1&loop=1&playlist=EbnNHAXsx3Q&controls=0&modestbranding=1&playsinline=1&rel=0&showinfo=0&disablekb=1&iv_load_policy=3&fs=0&start=18"
+            title="Plug In Stations - Eden Group case study"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            loading="eager"
+            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
         <div class="hero-video-overlay"></div>
       </div>
 
